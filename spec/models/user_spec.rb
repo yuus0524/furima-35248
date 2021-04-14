@@ -75,13 +75,13 @@ RSpec.describe User, type: :model do
     it 'passwordが6文字以上でも半角英数字混合でない場合登録できないこと' do
       @user.password = "aaaaaa"
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      expect(@user.errors.full_messages).to include("Password には半角英数字のみで英字と数字の両方を含めて設定してください")
     end
 
     it 'passwordが全角だと登録できないこと' do
       @user.password = "ああああああ"
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
+      expect(@user.errors.full_messages).to include("Password には半角英数字のみで英字と数字の両方を含めて設定してください")
     end
 
     it 'passwordとpassword_confirmationが不一致では登録できないこと' do
