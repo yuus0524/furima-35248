@@ -8,16 +8,30 @@ class Product < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :category_id, :condition_id, :days_to_ship_id, :delivery_burden_id, :prefecture_id, presence: true, numericality: { other_than: 1, message: 'Select' }
-  validates :image, :product_name, :description, :price, presence: true
+  with_options presence: true do
+    validates :image
+    validates :product_name
+    validates :description
+    validates :price
+    with_options numericality: { other_than: 1, message: 'Select' } do
+      validates :category_id
+      validates :condition_id
+      validates :delivery_burden_id
+      validates :prefecture_id
+      validates :days_to_ship_id
+    end
+  end
+
   validates :price,
-              format: {
+              numericality: {
                 with: /\A[0-9]+\z/,
-                message: 'Price Half-width number'
-            },
+                message: 'Half-width number'
+            }
+            
+  validates :price,
               numericality: {
                 greater_than_or_equal_to: 300,
                 less_than_or_equal_to: 9999999,
-                message: 'Price Out of setting range'
+                message: 'Out of setting range'
             }
 end

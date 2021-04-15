@@ -5,8 +5,8 @@ function price () {
   const saleProfit = itemPrice.value - fee;
   const addTaxPrice = document.getElementById("add-tax-price");
   const profit = document.getElementById("profit");
-  addTaxPrice.innerHTML = `${fee}`;
-  profit.innerHTML = `${saleProfit}`;
+  addTaxPrice.innerHTML = `${fee.toLocaleString()}`;
+  profit.innerHTML = `${saleProfit.toLocaleString()}`;
  });
 }
 
