@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
