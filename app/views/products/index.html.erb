@@ -125,10 +125,11 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-      <% if @products.present? %>
+      <% if @products.present? %> 
+      <%# 出品されている商品があるか無いかで条件分岐 %>
         <% @products.each do |product| %>
           <li class='list'>
-            <%= link_to "#" do %>
+            <%= link_to product_path(product.id) do %>
             <div class='item-img-content'>
               <%= image_tag product.image, class: "item-img" %>
 
