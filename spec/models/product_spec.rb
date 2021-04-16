@@ -32,31 +32,31 @@ RSpec.describe Product, type: :model do
       end
 
       it 'category_idが選択されていない(idが1)と保存できないこと' do
-        @product.category_id = "1"
+        @product.category_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Category Select")
       end
 
       it 'condition_idが選択されていない(id:1)と保存できないこと' do
-        @product.condition_id = "1"
+        @product.condition_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Condition Select")
       end
 
       it 'delivery_burden_idが選択されていない(id:1)と保存できないこと' do
-        @product.delivery_burden_id = "1"
+        @product.delivery_burden_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Delivery burden Select")
       end
 
       it 'prefecture_idが選択されていない(id:1)と保存できないこと' do
-        @product.prefecture_id = "1"
+        @product.prefecture_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Prefecture Select")
       end
 
       it 'days_to_ship_idが選択されていない(id:1)と保存できないこと' do
-        @product.days_to_ship_id = "1"
+        @product.days_to_ship_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Days to ship Select")
       end
@@ -80,13 +80,13 @@ RSpec.describe Product, type: :model do
       end
 
       it 'priceが300より小さい数字の場合保存できないこと' do
-        @product.price = "299"
+        @product.price = 299
         @product.valid?
         expect(@product.errors.full_messages).to include("Price Out of setting range")
       end
 
       it 'priceが9,999,999より大きい数字の場合保存できないこと' do
-        @product.price = "10,000,000"
+        @product.price = 10,000,000
         @product.valid?
         expect(@product.errors.full_messages).to include("Price Out of setting range")
       end
