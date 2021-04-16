@@ -92,7 +92,7 @@ RSpec.describe Product, type: :model do
       end
 
       it 'priceが9,999,999より大きい数字の場合保存できないこと' do
-        @product.price = 10,000,000
+        @product.price = 10_000_000
         @product.valid?
         expect(@product.errors.full_messages).to include("Price Out of setting range")
       end
