@@ -53,6 +53,6 @@ class ProductsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless current_user.id == @product.user_id
+    redirect_to action: :index unless current_user.id == @product.user_id && @product.purchase_record.blank?
   end
 end
