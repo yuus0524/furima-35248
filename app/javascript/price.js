@@ -1,5 +1,6 @@
 function price () {
  const itemPrice = document.getElementById("item-price")
+ if (!itemPrice){return false;}
  itemPrice.addEventListener("keyup", () => {
   const fee = Math.floor(itemPrice.value * 0.1);
   const saleProfit = itemPrice.value - fee;
